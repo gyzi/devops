@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+nurse_plant,nurse_plant,nurse_plant,base_group_user,1,1,1,1
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+nurse_customer,nurse_customer,nurse_customer,base_group_user,1,1,1,1

@@ -1,0 +1,105 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    
+    <record model="ir.ui.view" id="plant.list">
+      <field name="name">Plants</field>
+      <field name="model">nurse.plant</field>
+      <field name="arch" type="xml">
+        <tree string="List Plants">
+          <field name="name"/>
+          <field name="price" sum="Total Prices"/>
+          <field name="customer"/>
+          <field name="email"/> 
+          <!-- <field name="result"/> -->
+        </tree>
+      </field>
+    </record>
+    
+    <record id="plant_form" model="ir.ui.view">
+      <field name="name">Plants Data</field>
+      <field name="model">nurse.plant</field>
+      <field name="arch" type="xml">
+      <form String="Plant Form">
+      <header>
+        <button string="Confirm" type="object" name="action_confirm" 
+                state="draft" class="oe_highlight" />
+        <button string="Mark Done" type="object" name="action_done" 
+                state="confirmed" class="oe_highlight" />
+        <button string="Confirm" type="object" name="action_draft" 
+                state="confirmed,done" class="oe_highlight" />
+        
+      </header>
+
+      <sheet>
+      <div name="head">
+     
+      <h2> Plants Earth </h2>
+      <hr></hr> 
+      </div>
+          <group colspan="2">
+          <group colspan="2" col="2"> 
+          <separator string="Plants Info" />
+            <field name="name"/>
+            <field name="price"/>
+          </group>
+          </group>
+          <notebook>
+          <page string="Customers info">
+          <group colspan="2" col="2">
+            <field name="customer"/>
+          </group>
+          </page>
+          <page string="settings">
+          <group colspan="2" col="2">
+            <field name="email"/>
+          </group>
+          </page>        
+      
+          </notebook>
+
+      </sheet>
+      </form>
+      </field>
+    </record>
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="plant.action_window">
+      <field name="name">Plants</field>
+      <field name="res_model">nurse.plant</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="custom/plant.action_server">
+      <field name="name">custom/plant server</field>
+      <field name="model_id" ref="model_custom/plant_custom/plant"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+    
+   <menuitem name="Plants Nursery" id="plant_menu_root"/>
+    
+    <!-- menu categories -->
+    <menuitem name="Plants" id="nursery_plant_menu" parent="plant_menu_root" action="plant.action_window" sequence="1"/>
+    
+    <!-- actions -->
+    <!--
+    <menuitem name="List" id="custom/plant.menu_1_list" parent="custom/plant.menu_1"
+              action="custom/plant.action_window"/>
+    <menuitem name="Server to list" id="custom/plant" parent="custom/plant.menu_2"
+              action="custom/plant.action_server"/>
+    -->
+  </data>
+</odoo>
