@@ -1,0 +1,52 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    
+    <record model="ir.ui.view" id="plant.list">
+      <field name="name">Vendor</field>
+      <field name="model">res.company</field>
+      <field name="inherit_id" ref="base.view_company_tree"/>
+      <field name="arch" type="xml">
+
+      </field>
+    </record>
+   
+    <record model="ir.actions.act_window" id="company.action_window">
+      <field name="name">Vendors</field>
+      <field name="res_model">res.company</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="custom/plant.action_server">
+      <field name="name">custom/plant server</field>
+      <field name="model_id" ref="model_custom/plant_custom/plant"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+    
+   <menuitem name="Plants Nursery" id="plant_menu_root"/>
+    
+    <!-- menu categories -->
+    <menuitem name="Plants" id="company_plant_menu" parent="plant_menu_root" action="company.action_window" sequence="1"/>
+    
+    <!-- actions -->
+    <!--
+    <menuitem name="List" id="custom/plant.menu_1_list" parent="custom/plant.menu_1"
+              action="custom/plant.action_window"/>
+    <menuitem name="Server to list" id="custom/plant" parent="custom/plant.menu_2"
+              action="custom/plant.action_server"/>
+    -->
+  </data>
+</odoo>
