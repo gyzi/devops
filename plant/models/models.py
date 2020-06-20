@@ -21,6 +21,13 @@ class Plants(models.Model):
     price=fields.Float("Price")
     customer= fields.Many2one('res.company')
     email=fields.Char("Customer Email")
+    state = fields.Selection(
+        string='state',
+        selection=[('draft', 'Draft'), ('confirm', 'confirm'),('cancel','Cancel')]
+    , default='draft')
+
+    changes=fields.Datetime(readonly=True)
+    
 #     result=fields.Float(compute="_calc_sum",store=True)
 # @api.depends('price')
 # def _calc_sum(self):

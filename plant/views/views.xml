@@ -22,19 +22,19 @@
       <field name="arch" type="xml">
       <form String="Plant Form">
       <header>
-        <button string="Confirm" type="object" name="action_confirm" 
+        <button string="draft" type="object" name="action_confirm" 
                 state="draft" class="oe_highlight" />
         <button string="Mark Done" type="object" name="action_done" 
                 state="confirmed" class="oe_highlight" />
         <button string="Confirm" type="object" name="action_draft" 
-                state="confirmed,done" class="oe_highlight" />
-        
+                state="cancel" class="oe_highlight" />
+        <field name="state" widget="statusbar"/>
       </header>
 
       <sheet>
       <div name="head">
      
-      <h2> Plants Earth </h2>
+      <h2  algin="center" > Plants Earth </h2>
       <hr></hr> 
       </div>
           <group colspan="2">
